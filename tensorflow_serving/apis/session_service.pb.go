@@ -7,7 +7,7 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	framework "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework"
+	protobuf "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -30,7 +30,7 @@ type SessionRunRequest struct {
 	// (numerical) version.
 	ModelSpec *ModelSpec `protobuf:"bytes,1,opt,name=model_spec,json=modelSpec,proto3" json:"model_spec,omitempty"`
 	// Tensors to be fed in the step. Each feed is a named tensor.
-	Feed []*framework.NamedTensorProto `protobuf:"bytes,2,rep,name=feed,proto3" json:"feed,omitempty"`
+	Feed []*protobuf.NamedTensorProto `protobuf:"bytes,2,rep,name=feed,proto3" json:"feed,omitempty"`
 	// Fetches. A list of tensor names. The caller expects a tensor to
 	// be returned for each fetch[i] (see RunResponse.tensor). The
 	// order of specified fetches does not change the execution order.
@@ -39,10 +39,10 @@ type SessionRunRequest struct {
 	// to but their outputs will not be fetched.
 	Target []string `protobuf:"bytes,4,rep,name=target,proto3" json:"target,omitempty"`
 	// Options for the run call. **Currently ignored.**
-	Options              *framework.RunOptions `protobuf:"bytes,5,opt,name=options,proto3" json:"options,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Options              *protobuf.RunOptions `protobuf:"bytes,5,opt,name=options,proto3" json:"options,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *SessionRunRequest) Reset()         { *m = SessionRunRequest{} }
@@ -77,7 +77,7 @@ func (m *SessionRunRequest) GetModelSpec() *ModelSpec {
 	return nil
 }
 
-func (m *SessionRunRequest) GetFeed() []*framework.NamedTensorProto {
+func (m *SessionRunRequest) GetFeed() []*protobuf.NamedTensorProto {
 	if m != nil {
 		return m.Feed
 	}
@@ -98,7 +98,7 @@ func (m *SessionRunRequest) GetTarget() []string {
 	return nil
 }
 
-func (m *SessionRunRequest) GetOptions() *framework.RunOptions {
+func (m *SessionRunRequest) GetOptions() *protobuf.RunOptions {
 	if m != nil {
 		return m.Options
 	}
@@ -110,12 +110,12 @@ type SessionRunResponse struct {
 	ModelSpec *ModelSpec `protobuf:"bytes,3,opt,name=model_spec,json=modelSpec,proto3" json:"model_spec,omitempty"`
 	// NOTE: The order of the returned tensors may or may not match
 	// the fetch order specified in RunRequest.
-	Tensor []*framework.NamedTensorProto `protobuf:"bytes,1,rep,name=tensor,proto3" json:"tensor,omitempty"`
+	Tensor []*protobuf.NamedTensorProto `protobuf:"bytes,1,rep,name=tensor,proto3" json:"tensor,omitempty"`
 	// Returned metadata if requested in the options.
-	Metadata             *framework.RunMetadata `protobuf:"bytes,2,opt,name=metadata,proto3" json:"metadata,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
+	Metadata             *protobuf.RunMetadata `protobuf:"bytes,2,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
 func (m *SessionRunResponse) Reset()         { *m = SessionRunResponse{} }
@@ -150,14 +150,14 @@ func (m *SessionRunResponse) GetModelSpec() *ModelSpec {
 	return nil
 }
 
-func (m *SessionRunResponse) GetTensor() []*framework.NamedTensorProto {
+func (m *SessionRunResponse) GetTensor() []*protobuf.NamedTensorProto {
 	if m != nil {
 		return m.Tensor
 	}
 	return nil
 }
 
-func (m *SessionRunResponse) GetMetadata() *framework.RunMetadata {
+func (m *SessionRunResponse) GetMetadata() *protobuf.RunMetadata {
 	if m != nil {
 		return m.Metadata
 	}

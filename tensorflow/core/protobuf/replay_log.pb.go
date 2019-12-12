@@ -6,7 +6,6 @@ package protobuf
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	distruntime "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/distruntime"
 	math "math"
 )
 
@@ -24,11 +23,11 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // Records the creation of a new replay session.  We record the device listing
 // here to capture the state of the cluster.
 type NewReplaySession struct {
-	Devices              *distruntime.ListDevicesResponse `protobuf:"bytes,1,opt,name=devices,proto3" json:"devices,omitempty"`
-	SessionHandle        string                           `protobuf:"bytes,2,opt,name=session_handle,json=sessionHandle,proto3" json:"session_handle,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
-	XXX_unrecognized     []byte                           `json:"-"`
-	XXX_sizecache        int32                            `json:"-"`
+	Devices              *ListDevicesResponse `protobuf:"bytes,1,opt,name=devices,proto3" json:"devices,omitempty"`
+	SessionHandle        string               `protobuf:"bytes,2,opt,name=session_handle,json=sessionHandle,proto3" json:"session_handle,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *NewReplaySession) Reset()         { *m = NewReplaySession{} }
@@ -56,7 +55,7 @@ func (m *NewReplaySession) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_NewReplaySession proto.InternalMessageInfo
 
-func (m *NewReplaySession) GetDevices() *distruntime.ListDevicesResponse {
+func (m *NewReplaySession) GetDevices() *ListDevicesResponse {
 	if m != nil {
 		return m.Devices
 	}
@@ -147,43 +146,43 @@ type isReplayOp_Op interface {
 }
 
 type ReplayOp_CreateSession struct {
-	CreateSession *distruntime.CreateSessionRequest `protobuf:"bytes,1,opt,name=create_session,json=createSession,proto3,oneof"`
+	CreateSession *CreateSessionRequest `protobuf:"bytes,1,opt,name=create_session,json=createSession,proto3,oneof"`
 }
 
 type ReplayOp_ExtendSession struct {
-	ExtendSession *distruntime.ExtendSessionRequest `protobuf:"bytes,2,opt,name=extend_session,json=extendSession,proto3,oneof"`
+	ExtendSession *ExtendSessionRequest `protobuf:"bytes,2,opt,name=extend_session,json=extendSession,proto3,oneof"`
 }
 
 type ReplayOp_PartialRunSetup struct {
-	PartialRunSetup *distruntime.PartialRunSetupRequest `protobuf:"bytes,3,opt,name=partial_run_setup,json=partialRunSetup,proto3,oneof"`
+	PartialRunSetup *PartialRunSetupRequest `protobuf:"bytes,3,opt,name=partial_run_setup,json=partialRunSetup,proto3,oneof"`
 }
 
 type ReplayOp_RunStep struct {
-	RunStep *distruntime.RunStepRequest `protobuf:"bytes,4,opt,name=run_step,json=runStep,proto3,oneof"`
+	RunStep *RunStepRequest `protobuf:"bytes,4,opt,name=run_step,json=runStep,proto3,oneof"`
 }
 
 type ReplayOp_CloseSession struct {
-	CloseSession *distruntime.CloseSessionRequest `protobuf:"bytes,5,opt,name=close_session,json=closeSession,proto3,oneof"`
+	CloseSession *CloseSessionRequest `protobuf:"bytes,5,opt,name=close_session,json=closeSession,proto3,oneof"`
 }
 
 type ReplayOp_ListDevices struct {
-	ListDevices *distruntime.ListDevicesRequest `protobuf:"bytes,6,opt,name=list_devices,json=listDevices,proto3,oneof"`
+	ListDevices *ListDevicesRequest `protobuf:"bytes,6,opt,name=list_devices,json=listDevices,proto3,oneof"`
 }
 
 type ReplayOp_ResetRequest struct {
-	ResetRequest *distruntime.ResetRequest `protobuf:"bytes,7,opt,name=reset_request,json=resetRequest,proto3,oneof"`
+	ResetRequest *ResetRequest `protobuf:"bytes,7,opt,name=reset_request,json=resetRequest,proto3,oneof"`
 }
 
 type ReplayOp_MakeCallable struct {
-	MakeCallable *distruntime.MakeCallableRequest `protobuf:"bytes,8,opt,name=make_callable,json=makeCallable,proto3,oneof"`
+	MakeCallable *MakeCallableRequest `protobuf:"bytes,8,opt,name=make_callable,json=makeCallable,proto3,oneof"`
 }
 
 type ReplayOp_RunCallable struct {
-	RunCallable *distruntime.RunCallableRequest `protobuf:"bytes,9,opt,name=run_callable,json=runCallable,proto3,oneof"`
+	RunCallable *RunCallableRequest `protobuf:"bytes,9,opt,name=run_callable,json=runCallable,proto3,oneof"`
 }
 
 type ReplayOp_ReleaseCallable struct {
-	ReleaseCallable *distruntime.ReleaseCallableRequest `protobuf:"bytes,10,opt,name=release_callable,json=releaseCallable,proto3,oneof"`
+	ReleaseCallable *ReleaseCallableRequest `protobuf:"bytes,10,opt,name=release_callable,json=releaseCallable,proto3,oneof"`
 }
 
 type ReplayOp_NewReplaySession struct {
@@ -219,70 +218,70 @@ func (m *ReplayOp) GetOp() isReplayOp_Op {
 	return nil
 }
 
-func (m *ReplayOp) GetCreateSession() *distruntime.CreateSessionRequest {
+func (m *ReplayOp) GetCreateSession() *CreateSessionRequest {
 	if x, ok := m.GetOp().(*ReplayOp_CreateSession); ok {
 		return x.CreateSession
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetExtendSession() *distruntime.ExtendSessionRequest {
+func (m *ReplayOp) GetExtendSession() *ExtendSessionRequest {
 	if x, ok := m.GetOp().(*ReplayOp_ExtendSession); ok {
 		return x.ExtendSession
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetPartialRunSetup() *distruntime.PartialRunSetupRequest {
+func (m *ReplayOp) GetPartialRunSetup() *PartialRunSetupRequest {
 	if x, ok := m.GetOp().(*ReplayOp_PartialRunSetup); ok {
 		return x.PartialRunSetup
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetRunStep() *distruntime.RunStepRequest {
+func (m *ReplayOp) GetRunStep() *RunStepRequest {
 	if x, ok := m.GetOp().(*ReplayOp_RunStep); ok {
 		return x.RunStep
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetCloseSession() *distruntime.CloseSessionRequest {
+func (m *ReplayOp) GetCloseSession() *CloseSessionRequest {
 	if x, ok := m.GetOp().(*ReplayOp_CloseSession); ok {
 		return x.CloseSession
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetListDevices() *distruntime.ListDevicesRequest {
+func (m *ReplayOp) GetListDevices() *ListDevicesRequest {
 	if x, ok := m.GetOp().(*ReplayOp_ListDevices); ok {
 		return x.ListDevices
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetResetRequest() *distruntime.ResetRequest {
+func (m *ReplayOp) GetResetRequest() *ResetRequest {
 	if x, ok := m.GetOp().(*ReplayOp_ResetRequest); ok {
 		return x.ResetRequest
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetMakeCallable() *distruntime.MakeCallableRequest {
+func (m *ReplayOp) GetMakeCallable() *MakeCallableRequest {
 	if x, ok := m.GetOp().(*ReplayOp_MakeCallable); ok {
 		return x.MakeCallable
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetRunCallable() *distruntime.RunCallableRequest {
+func (m *ReplayOp) GetRunCallable() *RunCallableRequest {
 	if x, ok := m.GetOp().(*ReplayOp_RunCallable); ok {
 		return x.RunCallable
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetReleaseCallable() *distruntime.ReleaseCallableRequest {
+func (m *ReplayOp) GetReleaseCallable() *ReleaseCallableRequest {
 	if x, ok := m.GetOp().(*ReplayOp_ReleaseCallable); ok {
 		return x.ReleaseCallable
 	}
@@ -301,43 +300,43 @@ type isReplayOp_Response interface {
 }
 
 type ReplayOp_CreateSessionResponse struct {
-	CreateSessionResponse *distruntime.CreateSessionResponse `protobuf:"bytes,21,opt,name=create_session_response,json=createSessionResponse,proto3,oneof"`
+	CreateSessionResponse *CreateSessionResponse `protobuf:"bytes,21,opt,name=create_session_response,json=createSessionResponse,proto3,oneof"`
 }
 
 type ReplayOp_ExtendSessionResponse struct {
-	ExtendSessionResponse *distruntime.ExtendSessionResponse `protobuf:"bytes,22,opt,name=extend_session_response,json=extendSessionResponse,proto3,oneof"`
+	ExtendSessionResponse *ExtendSessionResponse `protobuf:"bytes,22,opt,name=extend_session_response,json=extendSessionResponse,proto3,oneof"`
 }
 
 type ReplayOp_PartialRunSetupResponse struct {
-	PartialRunSetupResponse *distruntime.PartialRunSetupResponse `protobuf:"bytes,23,opt,name=partial_run_setup_response,json=partialRunSetupResponse,proto3,oneof"`
+	PartialRunSetupResponse *PartialRunSetupResponse `protobuf:"bytes,23,opt,name=partial_run_setup_response,json=partialRunSetupResponse,proto3,oneof"`
 }
 
 type ReplayOp_RunStepResponse struct {
-	RunStepResponse *distruntime.RunStepResponse `protobuf:"bytes,24,opt,name=run_step_response,json=runStepResponse,proto3,oneof"`
+	RunStepResponse *RunStepResponse `protobuf:"bytes,24,opt,name=run_step_response,json=runStepResponse,proto3,oneof"`
 }
 
 type ReplayOp_CloseSessionResponse struct {
-	CloseSessionResponse *distruntime.CloseSessionResponse `protobuf:"bytes,25,opt,name=close_session_response,json=closeSessionResponse,proto3,oneof"`
+	CloseSessionResponse *CloseSessionResponse `protobuf:"bytes,25,opt,name=close_session_response,json=closeSessionResponse,proto3,oneof"`
 }
 
 type ReplayOp_ListDevicesResponse struct {
-	ListDevicesResponse *distruntime.ListDevicesResponse `protobuf:"bytes,26,opt,name=list_devices_response,json=listDevicesResponse,proto3,oneof"`
+	ListDevicesResponse *ListDevicesResponse `protobuf:"bytes,26,opt,name=list_devices_response,json=listDevicesResponse,proto3,oneof"`
 }
 
 type ReplayOp_ResetRequestResponse struct {
-	ResetRequestResponse *distruntime.ResetResponse `protobuf:"bytes,27,opt,name=reset_request_response,json=resetRequestResponse,proto3,oneof"`
+	ResetRequestResponse *ResetResponse `protobuf:"bytes,27,opt,name=reset_request_response,json=resetRequestResponse,proto3,oneof"`
 }
 
 type ReplayOp_MakeCallableResponse struct {
-	MakeCallableResponse *distruntime.MakeCallableResponse `protobuf:"bytes,28,opt,name=make_callable_response,json=makeCallableResponse,proto3,oneof"`
+	MakeCallableResponse *MakeCallableResponse `protobuf:"bytes,28,opt,name=make_callable_response,json=makeCallableResponse,proto3,oneof"`
 }
 
 type ReplayOp_RunCallableResponse struct {
-	RunCallableResponse *distruntime.RunCallableResponse `protobuf:"bytes,29,opt,name=run_callable_response,json=runCallableResponse,proto3,oneof"`
+	RunCallableResponse *RunCallableResponse `protobuf:"bytes,29,opt,name=run_callable_response,json=runCallableResponse,proto3,oneof"`
 }
 
 type ReplayOp_ReleaseCallableResponse struct {
-	ReleaseCallableResponse *distruntime.ReleaseCallableResponse `protobuf:"bytes,30,opt,name=release_callable_response,json=releaseCallableResponse,proto3,oneof"`
+	ReleaseCallableResponse *ReleaseCallableResponse `protobuf:"bytes,30,opt,name=release_callable_response,json=releaseCallableResponse,proto3,oneof"`
 }
 
 func (*ReplayOp_CreateSessionResponse) isReplayOp_Response() {}
@@ -367,70 +366,70 @@ func (m *ReplayOp) GetResponse() isReplayOp_Response {
 	return nil
 }
 
-func (m *ReplayOp) GetCreateSessionResponse() *distruntime.CreateSessionResponse {
+func (m *ReplayOp) GetCreateSessionResponse() *CreateSessionResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_CreateSessionResponse); ok {
 		return x.CreateSessionResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetExtendSessionResponse() *distruntime.ExtendSessionResponse {
+func (m *ReplayOp) GetExtendSessionResponse() *ExtendSessionResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_ExtendSessionResponse); ok {
 		return x.ExtendSessionResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetPartialRunSetupResponse() *distruntime.PartialRunSetupResponse {
+func (m *ReplayOp) GetPartialRunSetupResponse() *PartialRunSetupResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_PartialRunSetupResponse); ok {
 		return x.PartialRunSetupResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetRunStepResponse() *distruntime.RunStepResponse {
+func (m *ReplayOp) GetRunStepResponse() *RunStepResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_RunStepResponse); ok {
 		return x.RunStepResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetCloseSessionResponse() *distruntime.CloseSessionResponse {
+func (m *ReplayOp) GetCloseSessionResponse() *CloseSessionResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_CloseSessionResponse); ok {
 		return x.CloseSessionResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetListDevicesResponse() *distruntime.ListDevicesResponse {
+func (m *ReplayOp) GetListDevicesResponse() *ListDevicesResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_ListDevicesResponse); ok {
 		return x.ListDevicesResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetResetRequestResponse() *distruntime.ResetResponse {
+func (m *ReplayOp) GetResetRequestResponse() *ResetResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_ResetRequestResponse); ok {
 		return x.ResetRequestResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetMakeCallableResponse() *distruntime.MakeCallableResponse {
+func (m *ReplayOp) GetMakeCallableResponse() *MakeCallableResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_MakeCallableResponse); ok {
 		return x.MakeCallableResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetRunCallableResponse() *distruntime.RunCallableResponse {
+func (m *ReplayOp) GetRunCallableResponse() *RunCallableResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_RunCallableResponse); ok {
 		return x.RunCallableResponse
 	}
 	return nil
 }
 
-func (m *ReplayOp) GetReleaseCallableResponse() *distruntime.ReleaseCallableResponse {
+func (m *ReplayOp) GetReleaseCallableResponse() *ReleaseCallableResponse {
 	if x, ok := m.GetResponse().(*ReplayOp_ReleaseCallableResponse); ok {
 		return x.ReleaseCallableResponse
 	}

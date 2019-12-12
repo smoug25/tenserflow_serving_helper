@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	any "github.com/golang/protobuf/ptypes/any"
-	framework "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework"
+	protobuf "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf"
 	math "math"
 )
 
@@ -24,10 +24,10 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Message returned for "signature_def" field.
 type SignatureDefMap struct {
-	SignatureDef         map[string]*framework.SignatureDef `protobuf:"bytes,1,rep,name=signature_def,json=signatureDef,proto3" json:"signature_def,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}                           `json:"-"`
-	XXX_unrecognized     []byte                             `json:"-"`
-	XXX_sizecache        int32                              `json:"-"`
+	SignatureDef         map[string]*protobuf.SignatureDef `protobuf:"bytes,1,rep,name=signature_def,json=signatureDef,proto3" json:"signature_def,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
+	XXX_unrecognized     []byte                            `json:"-"`
+	XXX_sizecache        int32                             `json:"-"`
 }
 
 func (m *SignatureDefMap) Reset()         { *m = SignatureDefMap{} }
@@ -55,7 +55,7 @@ func (m *SignatureDefMap) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_SignatureDefMap proto.InternalMessageInfo
 
-func (m *SignatureDefMap) GetSignatureDef() map[string]*framework.SignatureDef {
+func (m *SignatureDefMap) GetSignatureDef() map[string]*protobuf.SignatureDef {
 	if m != nil {
 		return m.SignatureDef
 	}
@@ -165,7 +165,7 @@ func (m *GetModelMetadataResponse) GetMetadata() map[string]*any.Any {
 
 func init() {
 	proto.RegisterType((*SignatureDefMap)(nil), "tensorflow.serving.SignatureDefMap")
-	proto.RegisterMapType((map[string]*framework.SignatureDef)(nil), "tensorflow.serving.SignatureDefMap.SignatureDefEntry")
+	proto.RegisterMapType((map[string]*protobuf.SignatureDef)(nil), "tensorflow.serving.SignatureDefMap.SignatureDefEntry")
 	proto.RegisterType((*GetModelMetadataRequest)(nil), "tensorflow.serving.GetModelMetadataRequest")
 	proto.RegisterType((*GetModelMetadataResponse)(nil), "tensorflow.serving.GetModelMetadataResponse")
 	proto.RegisterMapType((map[string]*any.Any)(nil), "tensorflow.serving.GetModelMetadataResponse.MetadataEntry")

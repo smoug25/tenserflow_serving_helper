@@ -7,7 +7,6 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	distruntime "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/distruntime"
 	framework "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
@@ -316,7 +315,7 @@ func (m *QueueResponse) GetShape() []*framework.TensorShapeProto {
 
 type CreateContextRequest struct {
 	// Identifies the full cluster, and this particular worker's position within.
-	ServerDef *distruntime.ServerDef `protobuf:"bytes,1,opt,name=server_def,json=serverDef,proto3" json:"server_def,omitempty"`
+	ServerDef *ServerDef `protobuf:"bytes,1,opt,name=server_def,json=serverDef,proto3" json:"server_def,omitempty"`
 	// Whether the ops on the worker should be executed synchronously or
 	// asynchronously. By default, ops are executed synchronously.
 	Async bool `protobuf:"varint,2,opt,name=async,proto3" json:"async,omitempty"`
@@ -371,7 +370,7 @@ func (m *CreateContextRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreateContextRequest proto.InternalMessageInfo
 
-func (m *CreateContextRequest) GetServerDef() *distruntime.ServerDef {
+func (m *CreateContextRequest) GetServerDef() *ServerDef {
 	if m != nil {
 		return m.ServerDef
 	}
@@ -469,7 +468,7 @@ func (m *CreateContextResponse) GetDeviceAttributes() []*framework.DeviceAttribu
 
 type UpdateContextRequest struct {
 	// Identifies the full cluster, and this particular worker's position within.
-	ServerDef *distruntime.ServerDef `protobuf:"bytes,1,opt,name=server_def,json=serverDef,proto3" json:"server_def,omitempty"`
+	ServerDef *ServerDef `protobuf:"bytes,1,opt,name=server_def,json=serverDef,proto3" json:"server_def,omitempty"`
 	// Device attributes in the cluster
 	ClusterDeviceAttributes []*framework.DeviceAttributes `protobuf:"bytes,2,rep,name=cluster_device_attributes,json=clusterDeviceAttributes,proto3" json:"cluster_device_attributes,omitempty"`
 	// The ID of the context to be updated. A context with the specified ID must
@@ -508,7 +507,7 @@ func (m *UpdateContextRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UpdateContextRequest proto.InternalMessageInfo
 
-func (m *UpdateContextRequest) GetServerDef() *distruntime.ServerDef {
+func (m *UpdateContextRequest) GetServerDef() *ServerDef {
 	if m != nil {
 		return m.ServerDef
 	}

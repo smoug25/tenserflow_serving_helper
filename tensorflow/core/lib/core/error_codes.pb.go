@@ -6,7 +6,7 @@ package error_codes
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	framework "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework"
+	protobuf "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf"
 	math "math"
 )
 
@@ -22,29 +22,29 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Code from public import github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf/error_codes.proto
-type Code = framework.Code
+type Code = protobuf.Code
 
-var Code_name = framework.Code_name
-var Code_value = framework.Code_value
+var Code_name = protobuf.Code_name
+var Code_value = protobuf.Code_value
 
-const Code_OK = Code(framework.Code_OK)
-const Code_CANCELLED = Code(framework.Code_CANCELLED)
-const Code_UNKNOWN = Code(framework.Code_UNKNOWN)
-const Code_INVALID_ARGUMENT = Code(framework.Code_INVALID_ARGUMENT)
-const Code_DEADLINE_EXCEEDED = Code(framework.Code_DEADLINE_EXCEEDED)
-const Code_NOT_FOUND = Code(framework.Code_NOT_FOUND)
-const Code_ALREADY_EXISTS = Code(framework.Code_ALREADY_EXISTS)
-const Code_PERMISSION_DENIED = Code(framework.Code_PERMISSION_DENIED)
-const Code_UNAUTHENTICATED = Code(framework.Code_UNAUTHENTICATED)
-const Code_RESOURCE_EXHAUSTED = Code(framework.Code_RESOURCE_EXHAUSTED)
-const Code_FAILED_PRECONDITION = Code(framework.Code_FAILED_PRECONDITION)
-const Code_ABORTED = Code(framework.Code_ABORTED)
-const Code_OUT_OF_RANGE = Code(framework.Code_OUT_OF_RANGE)
-const Code_UNIMPLEMENTED = Code(framework.Code_UNIMPLEMENTED)
-const Code_INTERNAL = Code(framework.Code_INTERNAL)
-const Code_UNAVAILABLE = Code(framework.Code_UNAVAILABLE)
-const Code_DATA_LOSS = Code(framework.Code_DATA_LOSS)
-const Code_DO_NOT_USE_RESERVED_FOR_FUTURE_EXPANSION_USE_DEFAULT_IN_SWITCH_INSTEAD_ = Code(framework.Code_DO_NOT_USE_RESERVED_FOR_FUTURE_EXPANSION_USE_DEFAULT_IN_SWITCH_INSTEAD_)
+const Code_OK = Code(protobuf.Code_OK)
+const Code_CANCELLED = Code(protobuf.Code_CANCELLED)
+const Code_UNKNOWN = Code(protobuf.Code_UNKNOWN)
+const Code_INVALID_ARGUMENT = Code(protobuf.Code_INVALID_ARGUMENT)
+const Code_DEADLINE_EXCEEDED = Code(protobuf.Code_DEADLINE_EXCEEDED)
+const Code_NOT_FOUND = Code(protobuf.Code_NOT_FOUND)
+const Code_ALREADY_EXISTS = Code(protobuf.Code_ALREADY_EXISTS)
+const Code_PERMISSION_DENIED = Code(protobuf.Code_PERMISSION_DENIED)
+const Code_UNAUTHENTICATED = Code(protobuf.Code_UNAUTHENTICATED)
+const Code_RESOURCE_EXHAUSTED = Code(protobuf.Code_RESOURCE_EXHAUSTED)
+const Code_FAILED_PRECONDITION = Code(protobuf.Code_FAILED_PRECONDITION)
+const Code_ABORTED = Code(protobuf.Code_ABORTED)
+const Code_OUT_OF_RANGE = Code(protobuf.Code_OUT_OF_RANGE)
+const Code_UNIMPLEMENTED = Code(protobuf.Code_UNIMPLEMENTED)
+const Code_INTERNAL = Code(protobuf.Code_INTERNAL)
+const Code_UNAVAILABLE = Code(protobuf.Code_UNAVAILABLE)
+const Code_DATA_LOSS = Code(protobuf.Code_DATA_LOSS)
+const Code_DO_NOT_USE_RESERVED_FOR_FUTURE_EXPANSION_USE_DEFAULT_IN_SWITCH_INSTEAD_ = Code(protobuf.Code_DO_NOT_USE_RESERVED_FOR_FUTURE_EXPANSION_USE_DEFAULT_IN_SWITCH_INSTEAD_)
 
 func init() {
 	proto.RegisterFile("github.com/smoug25/tensorflow_serving_helper/tensorflow/core/lib/core/error_codes.proto", fileDescriptor_63234f20e8884c2e)
