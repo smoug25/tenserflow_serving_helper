@@ -11,7 +11,7 @@ import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework/v
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf/remote_tensor_handle.proto";
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf/tensorflow_server.proto";
 
-option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf/";
+option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf";
 
 // A proto representation of an eager operation.
 message Operation {
