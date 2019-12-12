@@ -8,6 +8,7 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	any "github.com/golang/protobuf/ptypes/any"
 	framework "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework"
+	protobuf "github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf"
 	math "math"
 )
 
@@ -816,11 +817,11 @@ type RunGraphResponse struct {
 	// optionally the server may return an OK status for the RPC and
 	// fill the true status into the fields below, to allow for messages
 	// that are too long to fit in metadata.
-	StatusCode           Code     `protobuf:"varint,5,opt,name=status_code,json=statusCode,proto3,enum=tensorflow.error.Code" json:"status_code,omitempty"`
-	StatusErrorMessage   string   `protobuf:"bytes,6,opt,name=status_error_message,json=statusErrorMessage,proto3" json:"status_error_message,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	StatusCode           protobuf.Code `protobuf:"varint,5,opt,name=status_code,json=statusCode,proto3,enum=tensorflow.error.Code" json:"status_code,omitempty"`
+	StatusErrorMessage   string        `protobuf:"bytes,6,opt,name=status_error_message,json=statusErrorMessage,proto3" json:"status_error_message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
 func (m *RunGraphResponse) Reset()         { *m = RunGraphResponse{} }
@@ -876,11 +877,11 @@ func (m *RunGraphResponse) GetPartitionGraph() []*framework.GraphDef {
 	return nil
 }
 
-func (m *RunGraphResponse) GetStatusCode() Code {
+func (m *RunGraphResponse) GetStatusCode() protobuf.Code {
 	if m != nil {
 		return m.StatusCode
 	}
-	return Code_OK
+	return protobuf.Code_OK
 }
 
 func (m *RunGraphResponse) GetStatusErrorMessage() string {

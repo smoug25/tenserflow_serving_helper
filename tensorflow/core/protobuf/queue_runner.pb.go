@@ -6,6 +6,7 @@ package tensorflow
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	protobuf "github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf"
 	math "math"
 )
 
@@ -32,10 +33,10 @@ type QueueRunnerDef struct {
 	CancelOpName string `protobuf:"bytes,4,opt,name=cancel_op_name,json=cancelOpName,proto3" json:"cancel_op_name,omitempty"`
 	// A list of exception types considered to signal a safely closed queue
 	// if raised during enqueue operations.
-	QueueClosedExceptionTypes []Code   `protobuf:"varint,5,rep,packed,name=queue_closed_exception_types,json=queueClosedExceptionTypes,proto3,enum=tensorflow.error.Code" json:"queue_closed_exception_types,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{} `json:"-"`
-	XXX_unrecognized          []byte   `json:"-"`
-	XXX_sizecache             int32    `json:"-"`
+	QueueClosedExceptionTypes []protobuf.Code `protobuf:"varint,5,rep,packed,name=queue_closed_exception_types,json=queueClosedExceptionTypes,proto3,enum=tensorflow.error.Code" json:"queue_closed_exception_types,omitempty"`
+	XXX_NoUnkeyedLiteral      struct{}        `json:"-"`
+	XXX_unrecognized          []byte          `json:"-"`
+	XXX_sizecache             int32           `json:"-"`
 }
 
 func (m *QueueRunnerDef) Reset()         { *m = QueueRunnerDef{} }
@@ -91,7 +92,7 @@ func (m *QueueRunnerDef) GetCancelOpName() string {
 	return ""
 }
 
-func (m *QueueRunnerDef) GetQueueClosedExceptionTypes() []Code {
+func (m *QueueRunnerDef) GetQueueClosedExceptionTypes() []protobuf.Code {
 	if m != nil {
 		return m.QueueClosedExceptionTypes
 	}

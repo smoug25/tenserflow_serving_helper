@@ -6,7 +6,7 @@ package error_codes
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	protobuf "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf"
+	protobuf "github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf"
 	math "math"
 )
 

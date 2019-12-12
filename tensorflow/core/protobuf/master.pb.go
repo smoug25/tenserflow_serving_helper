@@ -7,6 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	framework "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework"
+	protobuf "github.com/tensorflow/tensorflow/tensorflow/go/core/protobuf"
 	math "math"
 )
 
@@ -360,11 +361,11 @@ type RunStepResponse struct {
 	// optionally the server may return an OK status for the RPC and
 	// fill the true status into the fields below, to allow for messages
 	// that are too long to fit in metadata.
-	StatusCode           Code     `protobuf:"varint,3,opt,name=status_code,json=statusCode,proto3,enum=tensorflow.error.Code" json:"status_code,omitempty"`
-	StatusErrorMessage   string   `protobuf:"bytes,4,opt,name=status_error_message,json=statusErrorMessage,proto3" json:"status_error_message,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	StatusCode           protobuf.Code `protobuf:"varint,3,opt,name=status_code,json=statusCode,proto3,enum=tensorflow.error.Code" json:"status_code,omitempty"`
+	StatusErrorMessage   string        `protobuf:"bytes,4,opt,name=status_error_message,json=statusErrorMessage,proto3" json:"status_error_message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
 func (m *RunStepResponse) Reset()         { *m = RunStepResponse{} }
@@ -406,11 +407,11 @@ func (m *RunStepResponse) GetMetadata() *RunMetadata {
 	return nil
 }
 
-func (m *RunStepResponse) GetStatusCode() Code {
+func (m *RunStepResponse) GetStatusCode() protobuf.Code {
 	if m != nil {
 		return m.StatusCode
 	}
-	return Code_OK
+	return protobuf.Code_OK
 }
 
 func (m *RunStepResponse) GetStatusErrorMessage() string {
