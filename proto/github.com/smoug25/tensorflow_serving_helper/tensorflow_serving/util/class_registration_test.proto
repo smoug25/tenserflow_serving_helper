@@ -5,6 +5,7 @@ syntax = "proto3";
 import "google/protobuf/any.proto";
 
 package tensorflow.serving;
+option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/util";
 
 message Config1 {
   string string_field = 1;

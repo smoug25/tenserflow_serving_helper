@@ -5,7 +5,7 @@ import "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/util/sta
 
 package tensorflow.serving;
 option cc_enable_arenas = true;
-
+option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/apis";
 
 message ReloadConfigRequest {
   ModelServerConfig config = 1;

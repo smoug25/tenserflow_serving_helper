@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option cc_enable_arenas = true;
-
+option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/apis";
 
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/apis/get_model_status.proto";
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/apis/model_management.proto";

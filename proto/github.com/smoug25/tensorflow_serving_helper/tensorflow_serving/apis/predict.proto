@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package tensorflow.serving;
 option cc_enable_arenas = true;
-
+option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/apis";
 
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework/tensor.proto";
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow_serving/apis/model.proto";

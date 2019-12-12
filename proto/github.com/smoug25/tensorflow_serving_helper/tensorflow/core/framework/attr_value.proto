@@ -5,6 +5,7 @@ option cc_enable_arenas = true;
 option java_outer_classname = "AttrValueProtos";
 option java_multiple_files = true;
 option java_package = "org.tensorflow.framework";
+option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework";
 
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework/tensor.proto";
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework/tensor_shape.proto";
