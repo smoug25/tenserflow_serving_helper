@@ -1,0 +1,3 @@
+syntax = "proto3";
+
+import public "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf/error_codes.proto";
