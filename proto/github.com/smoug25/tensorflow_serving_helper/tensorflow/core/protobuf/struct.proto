@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package tensorflow;
+option go_package = "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/protobuf";
 
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework/tensor_shape.proto";
 import "github.com/smoug25/tensorflow_serving_helper/tensorflow/core/framework/types.proto";
